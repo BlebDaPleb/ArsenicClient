@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "Arsenic",
+  "version": "${version}",
+  "name": "Arsenic",
+  "description": "",
+  "authors": [
+    "BlebDaPleb"
+  ],
+  "contact": {},
+  "license": "AGPL-3.0",
+  "icon": "assets/Arsenic/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "blebdapleb.arsenic.arsenic.client.ArsenicClient"
+    ],
+    "main": [
+      "blebdapleb.arsenic.arsenic.Arsenic"
+    ]
+  },
+  "mixins": [
+    "Arsenic.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.19",
+    "fabric": "*",
+    "minecraft": "1.19.3"
+  }
+}
