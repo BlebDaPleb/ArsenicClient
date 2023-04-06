@@ -1,18 +1,13 @@
 package blebdapleb.arsenic.arsenic.module;
 
-import blebdapleb.arsenic.arsenic.Arsenic;
 import blebdapleb.arsenic.arsenic.module.mods.combat.Hitbox;
-import blebdapleb.arsenic.arsenic.util.ArsenicLogger;
+import blebdapleb.arsenic.arsenic.module.mods.render.Hud;
 import blebdapleb.arsenic.arsenic.util.collections.NameableStorage;
-import com.google.gson.annotations.SerializedName;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.InputUtil;
-import org.apache.commons.io.IOUtils;
 import org.lwjgl.glfw.GLFW;
 
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,6 +24,7 @@ public class ModuleManager {
         // MOVEMENT
 
         // RENDER
+        MODULES.add(new Hud());
 
         // PLAYER
 
@@ -38,6 +34,16 @@ public class ModuleManager {
 
     public static Iterable<Module> getModules() {
         return MODULES.values();
+    }
+
+    public static List<Module> getEnabledModules()
+    {
+        List<Module> enabled = new ArrayList<>();
+        for (Module m : MODULES.values())
+        {
+            if (m.isEnabled()) enabled.add(m);
+        }
+        return enabled;
     }
 
     public static Module getModule(String name) {

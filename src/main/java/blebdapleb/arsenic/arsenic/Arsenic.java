@@ -31,7 +31,4 @@ public class Arsenic implements ModInitializer {
     {
 
     }
-
-    public static ModuleManager getModuleManager() { return moduleManager; }
-
 }

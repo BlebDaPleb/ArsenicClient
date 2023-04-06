@@ -12,6 +12,10 @@ import blebdapleb.arsenic.arsenic.Arsenic;
 import blebdapleb.arsenic.arsenic.event.events.EventRenderCrosshair;
 import blebdapleb.arsenic.arsenic.event.events.EventRenderInGameHud;
 import blebdapleb.arsenic.arsenic.event.events.EventRenderOverlay;
+import blebdapleb.arsenic.arsenic.gui.Hud;
+import blebdapleb.arsenic.arsenic.module.Module;
+import blebdapleb.arsenic.arsenic.module.ModuleManager;
+import blebdapleb.arsenic.arsenic.module.mods.combat.Hitbox;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
@@ -35,6 +39,8 @@ public class MixinInGameHud {
 	private void render(MatrixStack matrixStack, float tickDelta, CallbackInfo info) {
 		EventRenderInGameHud event = new EventRenderInGameHud(matrixStack);
 		Arsenic.eventBus.post(event);
+
+		Hud.render(matrixStack, tickDelta); // RENDERS HUD
 
 		if (event.isCancelled()) {
 			info.cancel();
