@@ -1,6 +1,11 @@
 package blebdapleb.arsenic.arsenic;
 
+import blebdapleb.arsenic.arsenic.eventbus.ArsenicEventBus;
+import blebdapleb.arsenic.arsenic.eventbus.handler.InexactEventHandler;
+import blebdapleb.arsenic.arsenic.module.Module;
+import blebdapleb.arsenic.arsenic.module.ModuleManager;
 import blebdapleb.arsenic.arsenic.util.ArsenicLogger;
+import blebdapleb.arsenic.arsenic.util.FriendManager;
 import net.fabricmc.api.ModInitializer;
 
 public class Arsenic implements ModInitializer {
@@ -9,12 +14,24 @@ public class Arsenic implements ModInitializer {
 
     public static Arsenic getInstance() { return instance; }
 
+    public static ArsenicEventBus eventBus = new ArsenicEventBus(new InexactEventHandler("arsenic"), ArsenicLogger.logger);
+
+    private static ModuleManager moduleManager;
+
+    public static FriendManager friendMang;
+
     @Override
     public void onInitialize() {
         instance = this;
-
-        ArsenicLogger.info("ArsenicLogger Successfully Loaded!");
-        ArsenicLogger.warn("Warning!");
-        ArsenicLogger.error("Error!");
+        moduleManager = new ModuleManager();
+        friendMang = new FriendManager();
     }
+
+    public void postInit()
+    {
+
+    }
+
+    public static ModuleManager getModuleManager() { return moduleManager; }
+
 }
