@@ -26,9 +26,7 @@ public class Boxes {
 	}
 
 	/** Offsets this box so that minX, minY and minZ are all zero. **/
-	public static Box moveToZero(Box box) {
-		return box.offset(getMinVec(box).negate());
-	}
+	public static Box moveToZero(Box box) { return box.offset(getMinVec(box).negate()); }
 
 	/** Returns the distance between to oppisite corners of the box. **/
 	public static double getCornerLength(Box box) {

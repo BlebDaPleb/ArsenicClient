@@ -11,14 +11,13 @@ import net.minecraft.client.util.InputUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.text.Text;
 import net.minecraft.util.math.Box;
 
 public class Hitbox extends Module {
 
     public Hitbox()
     {
-        super("Hitbox", KEY_UNBOUND, ModuleCategory.COMBAT,
+        super("Hitbox", InputUtil.GLFW_KEY_RIGHT_SHIFT, ModuleCategory.COMBAT,
                 true, "Increases entity hitbox sizes");
     }
 
@@ -26,9 +25,6 @@ public class Hitbox extends Module {
 
     @ArsenicSubscribe
     public void onWorldRender(EventWorldRender.Post event) {
-
-        mc.inGameHud.getChatHud().addMessage(Text.literal("EventWorldRender.Post"));
-
         if(isEnabled())
         {
             for (Entity e : mc.world.getEntities())
@@ -40,9 +36,10 @@ public class Hitbox extends Module {
 
                 Box hitbox = e.getBoundingBox().expand(size);
 
+                int[] color = {255, 0, 0};
                 float width = 3.0f;
 
-                Renderer.drawBoxOutline(hitbox, QuadColor.single(255, 0, 0, 255), width);
+                Renderer.drawBoxOutline(hitbox, QuadColor.single(color[0], color[1], color[2], 255), width);
             }
         }
     }
