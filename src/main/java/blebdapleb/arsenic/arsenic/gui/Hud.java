@@ -1,8 +1,5 @@
 package blebdapleb.arsenic.arsenic.gui;
 
-import blebdapleb.arsenic.arsenic.Arsenic;
-import blebdapleb.arsenic.arsenic.event.events.EventRenderInGameHud;
-import blebdapleb.arsenic.arsenic.eventbus.ArsenicSubscribe;
 import blebdapleb.arsenic.arsenic.module.Module;
 import blebdapleb.arsenic.arsenic.module.ModuleManager;
 import net.minecraft.client.MinecraftClient;
@@ -24,7 +21,7 @@ public class Hud {
 
     public static void render(MatrixStack matrices, float tickDelta)
     {
-        if (ModuleManager.getModule(blebdapleb.arsenic.arsenic.module.mods.render.Hud.class).isEnabled())
+        if (ModuleManager.getModule(blebdapleb.arsenic.arsenic.module.mods.client.Hud.class).isEnabled())
             renderArrayList(matrices);
     }
 

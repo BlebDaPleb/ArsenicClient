@@ -4,6 +4,9 @@ import blebdapleb.arsenic.arsenic.event.events.EventWorldRender;
 import blebdapleb.arsenic.arsenic.eventbus.ArsenicSubscribe;
 import blebdapleb.arsenic.arsenic.module.Module;
 import blebdapleb.arsenic.arsenic.module.ModuleCategory;
+import blebdapleb.arsenic.arsenic.module.setting.settings.SettingBoolean;
+import blebdapleb.arsenic.arsenic.module.setting.settings.SettingMode;
+import blebdapleb.arsenic.arsenic.module.setting.settings.SettingNumber;
 import blebdapleb.arsenic.arsenic.util.ArsenicLogger;
 import blebdapleb.arsenic.arsenic.util.render.Renderer;
 import blebdapleb.arsenic.arsenic.util.render.color.QuadColor;
@@ -17,11 +20,12 @@ public class Hitbox extends Module {
 
     public Hitbox()
     {
-        super("Hitbox", InputUtil.GLFW_KEY_RIGHT_SHIFT, ModuleCategory.COMBAT,
-                true, "Increases entity hitbox sizes");
+        super("Hitbox", InputUtil.GLFW_KEY_RIGHT, ModuleCategory.COMBAT, true, "Increases entity hitbox sizes",
+                new SettingNumber("Size", 0.1, 1, 0.3, 0.1),
+                new SettingBoolean("Test", false),
+                new SettingMode("TestMode", "Default", "Default", "Mode 2", "Mode 3")
+        );
     }
-
-    public static double size = 10;
 
     @ArsenicSubscribe
     public void onWorldRender(EventWorldRender.Post event) {
@@ -33,6 +37,8 @@ public class Hitbox extends Module {
                     return;
                 if(!(e instanceof PlayerEntity) && !(e instanceof MobEntity))
                     return;
+
+                double size = getSetting(0).asNumber().getValue();
 
                 Box hitbox = e.getBoundingBox().expand(size);
 

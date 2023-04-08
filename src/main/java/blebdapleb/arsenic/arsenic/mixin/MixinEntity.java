@@ -13,6 +13,7 @@ import blebdapleb.arsenic.arsenic.event.events.EventPlayerPushed;
 import blebdapleb.arsenic.arsenic.module.Module;
 import blebdapleb.arsenic.arsenic.module.ModuleManager;
 import blebdapleb.arsenic.arsenic.module.mods.combat.Hitbox;
+import blebdapleb.arsenic.arsenic.module.setting.settings.SettingNumber;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.text.Text;
@@ -43,7 +44,7 @@ public class MixinEntity {
 	void onGetTargetingMargin(CallbackInfoReturnable<Float> info)
 	{
 		Module hitbox = ModuleManager.getModule(Hitbox.class);
-		double value = Hitbox.size;
+		double value = hitbox.getSetting(0).asNumber().getValueFloat();
 		if(!hitbox.isEnabled())
 			return;
 

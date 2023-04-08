@@ -1,7 +1,8 @@
 package blebdapleb.arsenic.arsenic.module;
 
+import blebdapleb.arsenic.arsenic.module.mods.client.ClickGui;
 import blebdapleb.arsenic.arsenic.module.mods.combat.Hitbox;
-import blebdapleb.arsenic.arsenic.module.mods.render.Hud;
+import blebdapleb.arsenic.arsenic.module.mods.client.Hud;
 import blebdapleb.arsenic.arsenic.util.collections.NameableStorage;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.InputUtil;
@@ -18,6 +19,8 @@ public class ModuleManager {
     public ModuleManager() { init(); }
 
     public void init() {
+        // BLATANT
+
         // COMBAT
         MODULES.add(new Hitbox());
 
@@ -26,9 +29,10 @@ public class ModuleManager {
         // RENDER
         MODULES.add(new Hud());
 
-        // PLAYER
-
         // MISC
+
+        // CLIENT
+        MODULES.add(new ClickGui());
 
     }
 

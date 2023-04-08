@@ -1,8 +1,13 @@
 package blebdapleb.arsenic.arsenic.module;
 
 import blebdapleb.arsenic.arsenic.Arsenic;
+import blebdapleb.arsenic.arsenic.module.setting.Setting;
 import blebdapleb.arsenic.arsenic.util.ArsenicLogger;
 import net.minecraft.client.MinecraftClient;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Module {
 
@@ -20,12 +25,14 @@ public class Module {
     private ModuleCategory category;
     private String desc;
 
+    private List<Setting> settings;
+
     public Module(String name, int key, ModuleCategory category, String desc)
     {
-        this(name, key, category, false ,desc);
+        this(name, key, category, false, desc);
     }
 
-    public Module(String name, int key, ModuleCategory category, boolean enabled , String desc)
+    public Module(String name, int key, ModuleCategory category, boolean enabled , String desc, Setting... settings)
     {
         this.name = name;
         this.key = key;
@@ -33,10 +40,15 @@ public class Module {
         this.defaultEnabled = enabled;
         this.desc = desc;
 
+        this.settings = new ArrayList<>(Arrays.asList(settings));
+
         if (enabled) {
             setEnabled(true);
         }
     }
+
+    public List<Setting> getSettings() { return settings; }
+    public Setting getSetting(int index) { return settings.get(index); }
 
     public void onEnable(boolean inWorld) {
         subscribed = Arsenic.eventBus.subscribe(this);
