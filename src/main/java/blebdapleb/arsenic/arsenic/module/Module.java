@@ -2,6 +2,7 @@ package blebdapleb.arsenic.arsenic.module;
 
 import blebdapleb.arsenic.arsenic.Arsenic;
 import blebdapleb.arsenic.arsenic.module.setting.Setting;
+import blebdapleb.arsenic.arsenic.module.setting.settings.SettingKey;
 import blebdapleb.arsenic.arsenic.util.ArsenicLogger;
 import net.minecraft.client.MinecraftClient;
 
@@ -16,7 +17,7 @@ public class Module {
     protected static final MinecraftClient mc = MinecraftClient.getInstance();
 
     private String name;
-    private int key;
+    private SettingKey key;
 
     private boolean enabled;
     private final boolean defaultEnabled;
@@ -27,20 +28,22 @@ public class Module {
 
     private List<Setting> settings;
 
-    public Module(String name, int key, ModuleCategory category, String desc)
+    public Module(String name, int key, ModuleCategory category, String desc, Setting... settings)
     {
-        this(name, key, category, false, desc);
+        this(name, key, category, false, desc, settings);
     }
 
     public Module(String name, int key, ModuleCategory category, boolean enabled , String desc, Setting... settings)
     {
         this.name = name;
-        this.key = key;
         this.category = category;
         this.defaultEnabled = enabled;
         this.desc = desc;
 
         this.settings = new ArrayList<>(Arrays.asList(settings));
+
+        this.key = new SettingKey("Bind", key);
+        this.settings.add(this.key);
 
         if (enabled) {
             setEnabled(true);
@@ -79,9 +82,11 @@ public class Module {
         this.name = name;
     }
 
-    public int getKey() { return key; }
+    public SettingKey getSettingKey() { return key; }
 
-    public void setKey(int key) { this.key = key; }
+    public int getKey() { return key.getValue(); }
+
+    public void setKey(int key) { this.key.setValue(key); }
 
     public boolean isEnabled() {
         return enabled;

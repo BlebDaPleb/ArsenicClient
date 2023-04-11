@@ -6,6 +6,7 @@ import blebdapleb.arsenic.arsenic.module.Module;
 import blebdapleb.arsenic.arsenic.module.ModuleManager;
 import blebdapleb.arsenic.arsenic.util.ArsenicLogger;
 import blebdapleb.arsenic.arsenic.util.FriendManager;
+import blebdapleb.arsenic.arsenic.util.Watermark;
 import net.fabricmc.api.ModInitializer;
 
 public class Arsenic implements ModInitializer {
@@ -19,6 +20,8 @@ public class Arsenic implements ModInitializer {
     private static ModuleManager moduleManager;
 
     public static FriendManager friendMang;
+
+    public static Watermark watermark;
 
     @Override
     public void onInitialize() {

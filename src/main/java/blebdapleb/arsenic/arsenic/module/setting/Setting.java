@@ -1,6 +1,7 @@
 package blebdapleb.arsenic.arsenic.module.setting;
 
 import blebdapleb.arsenic.arsenic.module.setting.settings.SettingBoolean;
+import blebdapleb.arsenic.arsenic.module.setting.settings.SettingKey;
 import blebdapleb.arsenic.arsenic.module.setting.settings.SettingMode;
 import blebdapleb.arsenic.arsenic.module.setting.settings.SettingNumber;
 
@@ -42,6 +43,15 @@ public class Setting {
     {
         try {
             return (SettingBoolean) this;
+        } catch (Exception e) {
+            throw new ClassCastException("Exception parsing setting: " + this);
+        }
+    }
+
+    public SettingKey asKey()
+    {
+        try {
+            return (SettingKey) this;
         } catch (Exception e) {
             throw new ClassCastException("Exception parsing setting: " + this);
         }

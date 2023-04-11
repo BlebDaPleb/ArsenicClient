@@ -1,5 +1,6 @@
 package blebdapleb.arsenic.arsenic.util;
 
+import blebdapleb.arsenic.arsenic.Arsenic;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
@@ -11,8 +12,6 @@ import org.apache.logging.log4j.Logger;
 public class ArsenicLogger {
 
     public static final Logger logger = LogManager.getFormatterLogger("BleachHack");
-
-    public static int ARSENIC_COLOR = 0xBF40BF;
 
     public static int INFO_COLOR = Formatting.GREEN.getColorValue();
     public static int WARN_COLOR = Formatting.YELLOW.getColorValue();
@@ -61,8 +60,7 @@ public class ArsenicLogger {
 
     private static MutableText getArsenicText(int color) {
         return Text.literal("[").styled(s -> s.withColor(color))
-                .append(Text.literal("Arsenic")).styled(s -> s.withColor(ARSENIC_COLOR))
+                .append(Arsenic.watermark.getText())
                 .append(Text.literal("] ").styled(s -> s.withColor(color)));
     }
-
 }

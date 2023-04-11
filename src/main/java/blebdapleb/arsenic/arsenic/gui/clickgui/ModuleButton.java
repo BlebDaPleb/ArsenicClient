@@ -1,12 +1,14 @@
 package blebdapleb.arsenic.arsenic.gui.clickgui;
 
 import blebdapleb.arsenic.arsenic.gui.clickgui.setting.Component;
+import blebdapleb.arsenic.arsenic.gui.clickgui.setting.components.BindBox;
 import blebdapleb.arsenic.arsenic.gui.clickgui.setting.components.CheckBox;
 import blebdapleb.arsenic.arsenic.gui.clickgui.setting.components.ModeBox;
 import blebdapleb.arsenic.arsenic.gui.clickgui.setting.components.Slider;
 import blebdapleb.arsenic.arsenic.module.Module;
 import blebdapleb.arsenic.arsenic.module.setting.Setting;
 import blebdapleb.arsenic.arsenic.module.setting.settings.SettingBoolean;
+import blebdapleb.arsenic.arsenic.module.setting.settings.SettingKey;
 import blebdapleb.arsenic.arsenic.module.setting.settings.SettingMode;
 import blebdapleb.arsenic.arsenic.module.setting.settings.SettingNumber;
 import net.minecraft.client.gui.DrawableHelper;
@@ -33,6 +35,10 @@ public class ModuleButton {
         this.components = new ArrayList<>();
 
         int setOffset = parent.height;
+
+        components.add(new BindBox(module.getSettingKey(), this, setOffset));
+        setOffset += parent.height;
+
         for (Setting setting : module.getSettings())
         {
             if (setting instanceof SettingBoolean)

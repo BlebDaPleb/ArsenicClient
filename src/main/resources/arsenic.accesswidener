@@ -155,5 +155,3 @@ accessible    field    net/minecraft/network/packet/c2s/play/VehicleMoveC2SPacke
 mutable       field    net/minecraft/network/packet/c2s/play/VehicleMoveC2SPacket    yaw    F
 accessible    field    net/minecraft/network/packet/c2s/play/VehicleMoveC2SPacket    pitch    F
 mutable       field    net/minecraft/network/packet/c2s/play/VehicleMoveC2SPacket    pitch    F
-
-

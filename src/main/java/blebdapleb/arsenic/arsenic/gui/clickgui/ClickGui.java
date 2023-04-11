@@ -16,6 +16,7 @@ public class ClickGui extends Screen {
     public List<Frame> frames;
 
     public static int frameColor = new Color(160, 39, 229).getRGB();
+    public static int keyDown = -1;
 
     private ClickGui()
     {
@@ -68,5 +69,12 @@ public class ClickGui extends Screen {
     @Override
     public boolean shouldPause() {
         return false;
+    }
+
+    @Override
+    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
+        keyDown = keyCode;
+
+        return super.keyPressed(keyCode, scanCode, modifiers);
     }
 }
