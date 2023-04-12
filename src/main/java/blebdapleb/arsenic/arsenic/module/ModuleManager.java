@@ -6,6 +6,7 @@ import blebdapleb.arsenic.arsenic.module.mods.combat.Hitbox;
 import blebdapleb.arsenic.arsenic.module.mods.client.Hud;
 import blebdapleb.arsenic.arsenic.module.mods.combat.Reach;
 import blebdapleb.arsenic.arsenic.module.mods.render.ESP;
+import blebdapleb.arsenic.arsenic.module.mods.render.Tracers;
 import blebdapleb.arsenic.arsenic.util.collections.NameableStorage;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.InputUtil;
@@ -33,6 +34,7 @@ public class ModuleManager {
 
         // RENDER
         MODULES.add(new ESP());
+        MODULES.add(new Tracers());
 
         // MISC
 
