@@ -2,6 +2,7 @@ package blebdapleb.arsenic.arsenic.module;
 
 import blebdapleb.arsenic.arsenic.module.mods.client.ClickGui;
 import blebdapleb.arsenic.arsenic.module.mods.combat.Aimbot;
+import blebdapleb.arsenic.arsenic.module.mods.combat.AutoTotem;
 import blebdapleb.arsenic.arsenic.module.mods.combat.Hitbox;
 import blebdapleb.arsenic.arsenic.module.mods.client.Hud;
 import blebdapleb.arsenic.arsenic.module.mods.combat.Reach;
@@ -29,6 +30,7 @@ public class ModuleManager {
         MODULES.add(new Hitbox());
         MODULES.add(new Aimbot());
         MODULES.add(new Reach());
+        MODULES.add(new AutoTotem());
 
         // MOVEMENT
 

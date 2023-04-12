@@ -54,9 +54,9 @@ public class Tracers extends Module {
         if (e == mc.player)
             return null;
 
-        if (e instanceof PlayerEntity)
+        if (e instanceof PlayerEntity && getSetting(0).asBoolean().isEnabled())
             return new int[]{255, 0, 0};
-        else if (e instanceof MobEntity)
+        else if (e instanceof MobEntity && getSetting(1).asBoolean().isEnabled())
             return new int[]{0, 255, 0};
 
         return null;
