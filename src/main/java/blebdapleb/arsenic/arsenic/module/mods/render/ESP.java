@@ -29,6 +29,9 @@ public class ESP extends Module {
     private ShaderEffectWrapper shader;
     private ColorVertexConsumerProvider colorVertexer;
 
+    private Identifier id = new Identifier("arsenic", "shaders/post/entity_outline.json");
+    private boolean shaderInitialized = false;
+
     public ESP() {
         super("ESP", KEY_UNBOUND, ModuleCategory.RENDER, "Shows entities & blocks throw walls.",
                 new SettingMode("Render", "Shader", "Shader", "Box"),
@@ -36,20 +39,26 @@ public class ESP extends Module {
                 new SettingNumber("Box", 1, 5, 1, 1),
                 new SettingNumber("BoxFill", 0, 255, 50, 1)
         );
+    }
 
+    private void initShader() {
+        if (!shaderInitialized) {
+            try {
+                shader = new ShaderEffectWrapper(
+                        ShaderLoader.loadEffect(mc.getFramebuffer(), id));
 
-        try {
-            shader = new ShaderEffectWrapper(
-                    ShaderLoader.loadEffect(mc.getFramebuffer(), new Identifier("arsenic", "shaders/post/entity_outline.json")));
-
-            colorVertexer = new ColorVertexConsumerProvider(shader.getFramebuffer("main"), ArsenicCoreShaders::getColorOverlayShader);
-        } catch (JsonSyntaxException | IOException e) {
-            throw new RuntimeException("Failed to initialize ESP Shader! loaded too early?", e);
+                colorVertexer = new ColorVertexConsumerProvider(shader.getFramebuffer("main"), ArsenicCoreShaders::getColorOverlayShader);
+            } catch (JsonSyntaxException | IOException e) {
+                throw new RuntimeException("Failed to initialize ESP Shader! loaded too early?", e);
+            }
         }
+        shaderInitialized = true;
     }
 
     @ArsenicSubscribe
     public void onWorldRender(EventWorldRender.Pre event) {
+        initShader();
+
         shader.prepare();
         shader.clearFramebuffer("main");
     }

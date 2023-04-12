@@ -23,7 +23,7 @@ public class ShaderLoader {
 	public static PostEffectProcessor loadEffect(Framebuffer framebuffer, Identifier id) throws JsonSyntaxException, IOException {
 		ResourceManager resMang = MinecraftClient.getInstance().getResourceManager();
 		TextureManager texMang = MinecraftClient.getInstance().getTextureManager();
-	
+
 		return new PostEffectProcessor(texMang, new OpenResourceManager(resMang), framebuffer, id);
 	}
 
