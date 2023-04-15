@@ -16,7 +16,7 @@ import static blebdapleb.arsenic.arsenic.gui.clickgui.ClickGui.keyDown;
 public class BindBox extends Component {
 
     private SettingKey keySet = setting.asKey();
-    private boolean selected = false;
+    public boolean selected = false;
 
     public BindBox(Setting setting, ModuleButton button, int offset) { super(setting, button, offset); }
 
@@ -29,7 +29,7 @@ public class BindBox extends Component {
         int textOffset = ((parent.parent.height / 2) - mc.textRenderer.fontHeight / 2);
 
         int key = keySet.getValue();
-        String name = key < 0 ? "NONE" : InputUtil.fromKeyCode(keySet.getValue(), -1).getLocalizedText().getString();
+        String name = key < 0 || key == InputUtil.GLFW_KEY_DELETE ? "NONE" : InputUtil.fromKeyCode(keySet.getValue(), -1).getLocalizedText().getString();
         if (name == null)
             name = "KEY" + key;
         else if (name.isEmpty())
@@ -37,12 +37,15 @@ public class BindBox extends Component {
 
         if (selected && keyDown >= 0)
         {
+            mc.textRenderer.drawWithShadow(matrices, keySet.getName() + ": " + name,
+                    parent.parent.x + textOffset + 2.5f, parent.parent.y + parent.offset + offset + textOffset, Color.RED.getRGB());
+
             keySet.setValue(keyDown);
             selected = false;
+        } else {
+            mc.textRenderer.drawWithShadow(matrices, keySet.getName() + ": " + name,
+                    parent.parent.x + textOffset + 2.5f, parent.parent.y + parent.offset + offset + textOffset, -1);
         }
-
-        mc.textRenderer.drawWithShadow(matrices, keySet.getName() + ": " + name,
-                parent.parent.x + textOffset + 5, parent.parent.y + parent.offset + offset + textOffset, -1);
 
         super.render(matrices, mouseX, mouseY, delta);
     }

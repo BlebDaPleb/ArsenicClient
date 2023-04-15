@@ -18,7 +18,7 @@ public class Frame {
 
     public boolean dragging, extended;
 
-    private List<ModuleButton> buttons;
+    public List<ModuleButton> buttons;
 
     public ModuleCategory category;
     public int color;

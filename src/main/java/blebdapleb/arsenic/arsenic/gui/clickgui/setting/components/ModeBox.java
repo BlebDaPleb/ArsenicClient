@@ -24,7 +24,7 @@ public class ModeBox extends Component {
         int textOffset = ((parent.parent.height / 2) - mc.textRenderer.fontHeight / 2);
 
         mc.textRenderer.drawWithShadow(matrices, modeSet.getName() + ": " + modeSet.getMode(),
-                parent.parent.x + textOffset + 5, parent.parent.y + parent.offset + offset + textOffset, -1);
+                parent.parent.x + textOffset + 2.5f, parent.parent.y + parent.offset + offset + textOffset, -1);
 
         super.render(matrices, mouseX, mouseY, delta);
     }

@@ -33,7 +33,7 @@ public class Slider extends Component {
 
         DrawableHelper.fill(matrices, parent.parent.x, parent.parent.y + parent.offset + offset,
                 parent.parent.x + renderWidth, parent.parent.y + parent.offset + offset + parent.parent.height,
-                Color.RED.getRGB());
+                new Color(0x8200c8).getRGB());
 
         if (sliding)
         {
@@ -47,7 +47,7 @@ public class Slider extends Component {
         int textOffset = ((parent.parent.height / 2) - mc.textRenderer.fontHeight / 2);
 
         mc.textRenderer.drawWithShadow(matrices, numSet.getName() + ": " + roundToPlace(numSet.getValue(), 2),
-                parent.parent.x + textOffset + 5, parent.parent.y + parent.offset + offset + textOffset, -1);
+                parent.parent.x + textOffset + 2.5f, parent.parent.y + parent.offset + offset + textOffset, -1);
 
         super.render(matrices, mouseX, mouseY, delta);
     }

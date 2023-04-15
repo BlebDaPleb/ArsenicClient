@@ -1,11 +1,9 @@
 package blebdapleb.arsenic.arsenic.module;
 
+import blebdapleb.arsenic.arsenic.module.mods.blatant.Jesus;
 import blebdapleb.arsenic.arsenic.module.mods.client.ClickGui;
-import blebdapleb.arsenic.arsenic.module.mods.combat.Aimbot;
-import blebdapleb.arsenic.arsenic.module.mods.combat.AutoTotem;
-import blebdapleb.arsenic.arsenic.module.mods.combat.Hitbox;
+import blebdapleb.arsenic.arsenic.module.mods.combat.*;
 import blebdapleb.arsenic.arsenic.module.mods.client.Hud;
-import blebdapleb.arsenic.arsenic.module.mods.combat.Reach;
 import blebdapleb.arsenic.arsenic.module.mods.render.ESP;
 import blebdapleb.arsenic.arsenic.module.mods.render.Tracers;
 import blebdapleb.arsenic.arsenic.util.collections.NameableStorage;
@@ -25,12 +23,15 @@ public class ModuleManager {
 
     public void init() {
         // BLATANT
+        MODULES.add(new Jesus());
 
         // COMBAT
         MODULES.add(new Hitbox());
         MODULES.add(new Aimbot());
         MODULES.add(new Reach());
         MODULES.add(new AutoTotem());
+        MODULES.add(new Criticals());
+        MODULES.add(new AutoPot());
 
         // MOVEMENT
 

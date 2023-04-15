@@ -104,5 +104,4 @@ public class ModuleButton {
         return mouseX > parent.x && mouseX < parent.x + parent.width &&
                 mouseY > parent.y + offset && mouseY < parent.y + offset + parent.height;
     }
-
 }

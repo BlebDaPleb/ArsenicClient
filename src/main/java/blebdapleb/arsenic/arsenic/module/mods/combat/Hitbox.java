@@ -13,6 +13,4 @@ public class Hitbox extends Module {
                 new SettingNumber("Size", 0.1, 1, 0.3, 0.1)
         );
     }
-
-
 }

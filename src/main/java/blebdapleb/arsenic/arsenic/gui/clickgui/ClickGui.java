@@ -1,6 +1,9 @@
 package blebdapleb.arsenic.arsenic.gui.clickgui;
 
+import blebdapleb.arsenic.arsenic.gui.clickgui.setting.Component;
+import blebdapleb.arsenic.arsenic.gui.clickgui.setting.components.BindBox;
 import blebdapleb.arsenic.arsenic.module.ModuleCategory;
+import blebdapleb.arsenic.arsenic.util.ArsenicLogger;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
@@ -30,7 +33,7 @@ public class ClickGui extends Screen {
 
         for (ModuleCategory category : ModuleCategory.values())
         {
-            frames.add(new Frame(category, offsetX, 20, width, height, Color.magenta.getRGB()));
+            frames.add(new Frame(category, offsetX, 20, width, height, new Color(0x8200c8).getRGB()));
             offsetX += width + padding;
         }
     }
@@ -76,5 +79,18 @@ public class ClickGui extends Screen {
         keyDown = keyCode;
 
         return super.keyPressed(keyCode, scanCode, modifiers);
+    }
+
+    @Override
+    public void close() {
+        for (Frame frame : frames){
+            for (ModuleButton button : frame.buttons) {
+                for (Component component : button.components) {
+                    if (component instanceof BindBox && ((BindBox) component).selected)
+                        ((BindBox) component).selected = false;
+                }
+            }
+        }
+        super.close();
     }
 }
