@@ -39,7 +39,7 @@ public class MixinClientConnection {
 	}
 
 	@Inject(method = "send(Lnet/minecraft/network/packet/Packet;Lnet/minecraft/network/PacketCallbacks;)V", at = @At("HEAD"), cancellable = true)
-	private void send(Packet<?> packet, PacketCallbacks packetCallback, CallbackInfo callback) {
+	private void send(Packet<?> packet, PacketCallbacks packetCallbacks, CallbackInfo callback) {
 		EventPacket.Send event = new EventPacket.Send(packet);
 		Arsenic.eventBus.post(event);
 

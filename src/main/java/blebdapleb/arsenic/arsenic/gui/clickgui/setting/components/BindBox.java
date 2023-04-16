@@ -35,13 +35,15 @@ public class BindBox extends Component {
         else if (name.isEmpty())
             name = "NONE";
 
-        if (selected && keyDown >= 0)
+        if (selected)
         {
             mc.textRenderer.drawWithShadow(matrices, keySet.getName() + ": " + name,
                     parent.parent.x + textOffset + 2.5f, parent.parent.y + parent.offset + offset + textOffset, Color.RED.getRGB());
 
-            keySet.setValue(keyDown);
-            selected = false;
+            if (keyDown >= 0) {
+                keySet.setValue(keyDown);
+                selected = false;
+            }
         } else {
             mc.textRenderer.drawWithShadow(matrices, keySet.getName() + ": " + name,
                     parent.parent.x + textOffset + 2.5f, parent.parent.y + parent.offset + offset + textOffset, -1);

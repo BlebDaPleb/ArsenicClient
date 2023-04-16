@@ -9,12 +9,15 @@
 package blebdapleb.arsenic.arsenic.mixin;
 
 import blebdapleb.arsenic.arsenic.Arsenic;
+import blebdapleb.arsenic.arsenic.event.events.EventEntity;
 import blebdapleb.arsenic.arsenic.event.events.EventSkyRender;
 import blebdapleb.arsenic.arsenic.event.events.EventTick;
 import blebdapleb.arsenic.arsenic.util.ArsenicQueue;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.DimensionEffects;
 import net.minecraft.client.world.ClientWorld;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.Vec3d;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -29,6 +32,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class MixinClientWorld {
 
 	@Shadow @Final private DimensionEffects dimensionEffects;
+
+	private MinecraftClient mc = MinecraftClient.getInstance();
 
 	@Inject(method = "tickEntities", at = @At("HEAD"), cancellable = true)
 	private void tickEntities(CallbackInfo info) {
@@ -62,6 +67,18 @@ public class MixinClientWorld {
 		} else if (event.getColor() != null) {
 			ci.setReturnValue(event.getColor());
 		}
+	}
+
+	@Inject(method = "addEntity", at = @At("RETURN"))
+	public void addEntity(int id, Entity entity, CallbackInfo ci) {
+		EventEntity.Spawn event = new EventEntity.Spawn(mc.world.getEntityById(id));
+		Arsenic.eventBus.post(event);
+	}
+
+	@Inject(method = "removeEntity", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;onRemoved()V"))
+	public void removeEntity(int entityId, Entity.RemovalReason removalReason, CallbackInfo ci) {
+		EventEntity.Remove event = new EventEntity.Remove(mc.world.getEntityById(entityId));
+		Arsenic.eventBus.post(event);
 	}
 
 	/**
