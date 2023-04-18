@@ -1,4 +1,4 @@
-package blebdapleb.arsenic.arsenic.module.mods.blatant;
+package blebdapleb.arsenic.arsenic.module.mods.movement;
 
 import blebdapleb.arsenic.arsenic.event.events.EventBlockShape;
 import blebdapleb.arsenic.arsenic.event.events.EventTick;
@@ -15,7 +15,7 @@ import net.minecraft.util.shape.VoxelShapes;
 public class Jesus extends Module {
 
     public Jesus() {
-        super("Jesus", KEY_UNBOUND, ModuleCategory.BLATANT, "Allows you to walk on water.",
+        super("Jesus", KEY_UNBOUND, ModuleCategory.MOVEMENT, "Allows you to walk on water.",
                 new SettingMode("Mode", "Solid", "Solid", "Vibrate")
         );
     }
