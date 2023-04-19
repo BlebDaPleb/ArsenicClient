@@ -1,9 +1,11 @@
 package blebdapleb.arsenic.arsenic.module;
 
+import blebdapleb.arsenic.arsenic.module.mods.misc.SelfDestruct;
 import blebdapleb.arsenic.arsenic.module.mods.movement.Jesus;
 import blebdapleb.arsenic.arsenic.module.mods.client.ClickGui;
 import blebdapleb.arsenic.arsenic.module.mods.combat.*;
 import blebdapleb.arsenic.arsenic.module.mods.client.Hud;
+import blebdapleb.arsenic.arsenic.module.mods.movement.JetPack;
 import blebdapleb.arsenic.arsenic.module.mods.movement.NoFall;
 import blebdapleb.arsenic.arsenic.module.mods.render.ESP;
 import blebdapleb.arsenic.arsenic.module.mods.render.Tracers;
@@ -25,6 +27,7 @@ public class ModuleManager {
     public void init() {
         // MOVEMENT
         MODULES.add(new Jesus());
+        MODULES.add(new JetPack());
         MODULES.add(new NoFall());
 
         // COMBAT
@@ -36,12 +39,14 @@ public class ModuleManager {
         MODULES.add(new AutoTotem());
         MODULES.add(new Criticals());
         MODULES.add(new AutoPot());
+        MODULES.add(new BowBot());
 
         // RENDER
         MODULES.add(new ESP());
         MODULES.add(new Tracers());
 
         // MISC
+        MODULES.add(new SelfDestruct());
 
         // CLIENT
         MODULES.add(new ClickGui());

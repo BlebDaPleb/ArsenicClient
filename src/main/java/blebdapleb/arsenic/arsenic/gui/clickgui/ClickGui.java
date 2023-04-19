@@ -21,9 +21,12 @@ public class ClickGui extends Screen {
     public static int frameColor = new Color(160, 39, 229).getRGB();
     public static int keyDown = -1;
 
+    // STRINGS FOR SELFDESTRUCT
+    public static String name = "ClickGUI";
+
     private ClickGui()
     {
-        super(Text.literal("Click GUI"));
+        super(Text.literal(name));
 
         frames = new ArrayList<>();
         int offsetX = 20;

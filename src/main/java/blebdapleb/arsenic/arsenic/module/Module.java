@@ -74,9 +74,8 @@ public class Module {
         return category;
     }
 
-    public String getDesc() {
-        return desc;
-    }
+    public String getDesc() { return desc; }
+    public void setDesc(String desc) { this.desc = desc; }
 
     public void setName(String name) {
         this.name = name;
