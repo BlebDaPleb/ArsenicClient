@@ -47,7 +47,7 @@ public class Slider extends Component {
         int textOffset = ((parent.parent.height / 2) - mc.textRenderer.fontHeight / 2);
 
         mc.textRenderer.drawWithShadow(matrices, numSet.getName() + ": " + roundToPlace(numSet.getValue(), 2),
-                parent.parent.x + textOffset + 2.5f, parent.parent.y + parent.offset + offset + textOffset, -1);
+                parent.parent.x + textOffset + 3.5f, parent.parent.y + parent.offset + offset + textOffset, -1);
 
         super.render(matrices, mouseX, mouseY, delta);
     }

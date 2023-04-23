@@ -11,7 +11,7 @@ import org.apache.logging.log4j.Logger;
 
 public class ArsenicLogger {
 
-    public static final Logger logger = LogManager.getFormatterLogger("BleachHack");
+    public static final Logger logger = LogManager.getFormatterLogger("arsenic");
 
     public static int INFO_COLOR = Formatting.GREEN.getColorValue();
     public static int WARN_COLOR = Formatting.YELLOW.getColorValue();

@@ -35,6 +35,10 @@ public class Component {
         
     }
 
+    public void keyPressed(int keyCode, int scanCode, int modifiers) {
+
+    }
+
     public boolean isHovered(double mouseX, double mouseY)
     {
         return mouseX > parent.parent.x && mouseX < parent.parent.x + parent.parent.width &&

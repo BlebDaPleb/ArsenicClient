@@ -27,7 +27,7 @@ public class ClickGui extends Module {
         super.onDisable(inWorld);
 
         if (mc.currentScreen instanceof blebdapleb.arsenic.arsenic.gui.clickgui.ClickGui)
-        mc.setScreen(null);
+            mc.setScreen(null);
     }
 
     @ArsenicSubscribe

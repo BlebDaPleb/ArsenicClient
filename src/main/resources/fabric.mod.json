@@ -9,7 +9,6 @@
   ],
   "contact": {},
   "license": "AGPL-3.0",
-  "icon": "assets/Arsenic/icon.png",
   "environment": "*",
   "entrypoints": {
     "client": [

@@ -4,9 +4,7 @@ import blebdapleb.arsenic.arsenic.gui.clickgui.setting.Component;
 import blebdapleb.arsenic.arsenic.module.Module;
 import blebdapleb.arsenic.arsenic.module.ModuleCategory;
 import blebdapleb.arsenic.arsenic.module.ModuleManager;
-import blebdapleb.arsenic.arsenic.util.ArsenicLogger;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.font.FontManager;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.util.math.MatrixStack;
 
@@ -106,6 +104,12 @@ public class Frame {
         {
             x = (int) (mouseX - dragX);
             y = (int) (mouseY - dragY);
+        }
+    }
+
+    public void keyPressed(int keyCode, int scanCode, int modifiers) {
+        for (ModuleButton mb : buttons) {
+            mb.keyPressed(keyCode, scanCode, modifiers);
         }
     }
 

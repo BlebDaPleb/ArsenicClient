@@ -77,6 +77,8 @@ public class ESP extends Module {
 
     @ArsenicSubscribe
     public void onWorldRender(EventWorldRender.Post event) {
+        if (!isEnabled()) return;
+
         if (getSetting(0).asMode().isMode("Shader")) {
             colorVertexer.draw();
             shader.render();

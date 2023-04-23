@@ -66,6 +66,9 @@ public class ModuleButton {
         }
         parent.mc.textRenderer.drawWithShadow(matrices, module.getName(), parent.x + textOffset, parent.y + offset + textOffset,
                 module.isEnabled() ? ClickGui.frameColor : -1);
+        if (components.size() > 0)
+            parent.mc.textRenderer.drawWithShadow(matrices, extended ? "∨" : "∧", parent.x + parent.width - 8, parent.y + offset + textOffset,
+                    module.isEnabled() ? ClickGui.frameColor : -1);
 
         if (extended) {
             for (Component component : components) {
@@ -104,4 +107,11 @@ public class ModuleButton {
         return mouseX > parent.x && mouseX < parent.x + parent.width &&
                 mouseY > parent.y + offset && mouseY < parent.y + offset + parent.height;
     }
+
+    public void keyPressed(int keyCode, int scanCode, int modifiers) {
+        for (Component component : components) {
+            component.keyPressed(keyCode, scanCode, modifiers);
+        }
+    }
+
 }

@@ -31,7 +31,7 @@ public class ClickGui extends Screen {
         frames = new ArrayList<>();
         int offsetX = 20;
         int width = 100;
-        int height = 20;
+        int height = 12;
         int padding = 20;
 
         for (ModuleCategory category : ModuleCategory.values())
@@ -79,7 +79,9 @@ public class ClickGui extends Screen {
 
     @Override
     public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
-        keyDown = keyCode;
+        for (Frame frame : frames) {
+            frame.keyPressed(keyCode, scanCode, modifiers);
+        }
 
         return super.keyPressed(keyCode, scanCode, modifiers);
     }
